@@ -11,13 +11,17 @@ const oauth2Client = new google.auth.OAuth2(
 
 const SCOPES = [
     "https://www.googleapis.com/auth/calendar",
-    "https://www.googleapis.com/auth/calendar.events"
+    "https://www.googleapis.com/auth/calendar.events",
+    "https://www.googleapis.com/auth/userinfo.profile",
+    "https://www.googleapis.com/auth/userinfo.email",
+    "openid",
 ];
 
 const getAuthUrl = () => {
     return oauth2Client.generateAuthUrl({
         access_type: "offline",
         scope: SCOPES,
+        prompt: "consent"
     });
 };
 
